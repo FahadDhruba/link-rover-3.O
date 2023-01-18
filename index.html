@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Title of the webpage -->
+    <title>Link Rover 3.O</title>
+    <meta charset="UTF-8" />
+
+    <!-- Viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Description meta tag -->
+    <meta
+      name="description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba that modifies Google Drive links to make them viewable and downloadable."
+    />
+
+    <!-- Keywords meta tag -->
+    <meta
+      name="keywords"
+      content="Google Drive, link, viewable, downloadable, Fahad Alamgir Dhruba, Link Rover"
+    />
+
+    <!-- Author meta tag -->
+    <meta name="author" content="Fahad Alamgir Dhruba" />
+
+    <!-- Canonical link tag -->
+    <link rel="canonical" href="https://linkrover.netlify.app/" />
+
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Link Rover V3" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://linkrover.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://linkrover.netlify.app/images/logo.png"
+    />
+    <meta
+      property="og:description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba that modifies Google Drive links to make them viewable and downloadable."
+    />
+
+    <!-- Twitter card tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Link Rover V3" />
+    <meta
+      name="twitter:description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba that modifies Google Drive links to make them viewable and downloadable."
+    />
+    <meta
+      name="twitter:image"
+      content="https://linkrover.netlify.app/images/logo.png"
+    />
+    <meta name="twitter:url" content="https://linkrover.netlify.app/" />
+
+    <!-- WhatsApp meta tags -->
+    <meta
+      name="whatsapp:description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba that modifies Google Drive links to make them viewable and downloadable."
+    />
+    <meta name="whatsapp:title" content="Link Rover V3" />
+    <meta
+      name="whatsapp:image"
+      content="https://linkrover.netlify.app/images/logo.png"
+    />
+    <meta name="whatsapp:url" content="https://linkrover.netlify.app/" />
+
+    <!-- External javascript and css files -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body class="bg-slate-200">
+    <div class="bg-slate-200 p-2 my-36 w-full max-w-md mx-auto" id="wrapper">
+      <div id="urlbox">
+        <div class="p-4">
+          <label
+            for="url"
+            class="mb-2 text-sm font-medium text-gray-900 sr-only"
+            >Enter Drive Url Here!</label
+          >
+          <div class="relative">
+            <input
+              type="text"
+              id="url"
+              name="url"
+              class="block w-full p-4 pr-16 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-4 focus:ring-green-100"
+              placeholder="Enter Drive Url Here!"
+              onfocus="this.select()"
+              autocomplete="off"
+              required
+            />
+            <button
+              type="button"
+              onclick="convert()"
+              class="text-gray-800 absolute right-2.5 bottom-2.5 bg-gray-400 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-4 py-2"
+            >
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="copybox">
+        <div class="p-4">
+          <label
+            for="Result"
+            class="mb-2 text-sm font-medium text-gray-900 sr-only"
+            >Enter Url</label
+          >
+          <div class="relative">
+            <input
+              type="text"
+              id="result"
+              name="result"
+              class="block w-full p-4 pr-16 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+              placeholder=""
+              onfocus="this.select()"
+              autocomplete="off"
+              required
+            />
+            <button
+              type="button"
+              id="copybtn"
+              class="text-gray-800 absolute right-2.5 bottom-2.5 bg-gray-400 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+            >
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/script.js"></script>
+  </body>
+
+</html>
