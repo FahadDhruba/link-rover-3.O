@@ -3,7 +3,7 @@
   <head>
     <!-- Title of the webpage -->
     <title>Link Rover 3.O</title>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
 
     <!-- Viewport meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -96,7 +96,7 @@
             />
             <button
               type="button"
-              onclick="convert()"
+              id="btn"
               class="text-gray-800 absolute right-2.5 bottom-2.5 bg-gray-400 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-4 py-2"
             >
               <i class="fas fa-arrow-right"></i>
@@ -123,6 +123,7 @@
               autocomplete="off"
               required
             />
+
             <button
               type="button"
               id="copybtn"
@@ -135,7 +136,114 @@
       </div>
     </div>
 
-    <script src="src/script.js"></script>
-  </body>
+    <!-- <script src="src/script.js"></script> -->
 
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+      } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0z9y5NuCs2OTHo5akeIV5-hQYRvpOXmE",
+        authDomain: "link-rover-3.firebaseapp.com",
+        databaseURL: "https://link-rover-3-default-rtdb.firebaseio.com",
+        projectId: "link-rover-3",
+        storageBucket: "link-rover-3.appspot.com",
+        messagingSenderId: "715683693672",
+        appId: "1:715683693672:web:0d86f9370a7949095727dd",
+        measurementId: "G-CPTVR03Q63",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      //Initialise Database
+
+      const db = getDatabase(app);
+
+      //Make a Function to Upload Data
+
+      function webupdt(fileId, url, sUrl, type) {
+        const d = new Date();
+        let uc = d.getTime();
+        let web = window.location.href;
+        set(ref(db, "webNetlify3/" + uc), {
+          title: fileId,
+          mLink: url,
+          sLink: sUrl,
+          time: d.toString(),
+          webService: web,
+          type: type,
+        });
+      }
+
+      //Main Code That I Meant For
+
+
+      //Main Function
+
+      function convertURL(url) {
+        const regex = /https:\/\/(docs|drive)\.google\.com\/(document|presentation|spreadsheets|file)\/d\/([a-zA-Z0-9_-]+)/;
+        const match = url.match(regex);
+
+        if (!match) {
+          let errorID = "Error: Invalid URL";
+          alert(errorID);
+          document.getElementById("url").value = "";
+          return;
+        }
+
+        const baseURL = "https://drive.google.com/file/d/";
+        const fileId = match[3];
+        let sUrl = baseURL + fileId + "/";
+        let type = match[2];
+
+        //Database Uploader Call of Function
+
+        webupdt(fileId, url, sUrl, type);
+
+        return sUrl;
+      }
+
+      //Designer Function
+      
+      function convert() {
+        const url = document.getElementById("url").value;
+        const result = convertURL(url);
+        if (result) {
+          document.getElementById("result").value = result;
+          document.getElementById("copybox").style.display = "block";
+          document.getElementById("copybox").style.transition =
+            "opacity 1s ease-in-out";
+          document.getElementById("copybox").style.opacity = 0;
+
+          setTimeout(function () {
+            document.getElementById("copybox").style.opacity = 1;
+          }, 100);
+        }
+      }
+
+      document.getElementById("copybtn").addEventListener("click", function () {
+        // Select the content of the input box
+        document.getElementById("result").select();
+        // Copy the selected content
+        document.execCommand("copy");
+        console.log(">_ copied");
+      });
+
+      // Listen for changes to the input element
+      document.getElementById("url").addEventListener("input", function () {
+        // Hide the div with the id "copybox"
+        document.getElementById("copybox").style.display = "none";
+      });
+
+      document.getElementById("btn").addEventListener("click", convert);
+    </script>
+  </body>
 </html>
