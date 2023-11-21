@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Title of the webpage -->
+    <title>View | Link Rover 3.O</title>
+    <meta charset="UTF-8" />
+
+    <!-- Viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Description meta tag -->
+    <meta
+      name="description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba that modifies Google Drive links to make them viewable and downloadable."
+    />
+
+    <!-- Keywords meta tag -->
+    <meta
+      name="keywords"
+      content="Google Drive, link, viewable, downloadable, Fahad Alamgir Dhruba, Link Rover"
+    />
+
+    <!-- Author meta tag -->
+    <meta name="author" content="Fahad Alamgir Dhruba" />
+
+    <!-- Canonical link tag -->
+    <link rel="canonical" href="https://linkrover.netlify.app/" />
+
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Link Rover V3" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://linkrover.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://linkrover.netlify.app/images/logo.png"
+    />
+    <meta
+      property="og:description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba that modifies Google Drive links to make them viewable and downloadable."
+    />
+
+    <!-- Twitter card tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Link Rover V3" />
+    <meta
+      name="twitter:description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba that modifies Google Drive links to make them viewable and downloadable."
+    />
+    <meta
+      name="twitter:image"
+      content="https://linkrover.netlify.app/images/logo.png"
+    />
+    <meta name="twitter:url" content="https://linkrover.netlify.app/" />
+
+    <!-- WhatsApp meta tags -->
+    <meta
+      name="whatsapp:description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba that modifies Google Drive links to make them viewable and downloadable."
+    />
+    <meta name="whatsapp:title" content="Link Rover V3" />
+    <meta
+      name="whatsapp:image"
+      content="https://linkrover.netlify.app/images/logo.png"
+    />
+    <meta name="whatsapp:url" content="https://linkrover.netlify.app/" />
+
+    <!-- External javascript and css files -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body class="bg-slate-200">
+    <header class="text-gray-800 py-4 w-full">
+      <div class="container mx-auto text-center">
+        <h5 class="text-lg font-semibold">Rovered Links</h5>
+        <span
+          class="absolute w-16 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"
+        ></span>
+      </div>
+    </header>
+
+    <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 p-4" id="showFix">
+      <div
+        class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700"
+      >
+        <h5
+          class="mb-3 px-2 text-base font-semibold text-gray-900 md:text-xl dark:text-white"
+        >
+        title
+        </h5>
+
+        <ul class="my-4 space-y-3">
+          <li>
+            <div
+              class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP"
+              id="clickP"
+            >
+              <span
+                class="line-clamp-1 flex-1 text-xs cursor-pointer"
+                id="clickC"
+                >mLink</span
+              >
+              <span id="rep"
+                class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400"
+                >Copy</span
+              >
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP"
+              id="clickP"
+            >
+              <span
+                class="line-clamp-1 flex-1 text-xs cursor-pointer"
+                id="clickC"
+                >sLink</span
+              >
+              <span id="rep"
+                class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400"
+                >Copy</span
+              >
+            </div>
+          </li>
+        </ul>
+        <p
+          class="text-sm px-4 font-normal text-right text-gray-500 dark:text-gray-400"
+        >
+        time
+        </p>
+      </div>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        onValue,
+      } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0z9y5NuCs2OTHo5akeIV5-hQYRvpOXmE",
+        authDomain: "link-rover-3.firebaseapp.com",
+        databaseURL: "https://link-rover-3-default-rtdb.firebaseio.com",
+        projectId: "link-rover-3",
+        storageBucket: "link-rover-3.appspot.com",
+        messagingSenderId: "715683693672",
+        appId: "1:715683693672:web:0d86f9370a7949095727dd",
+        measurementId: "G-CPTVR03Q63",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      //###############f
+      const db = getDatabase(app);
+
+      const starCountRef = ref(db, "webNetlify3");
+      onValue(starCountRef, (snapshot) => {
+        const data2 = snapshot.val();
+        console.log(data2);
+        let putFix = "";
+        for (let x in data2) {
+          // Accessing data for a specific entry
+          const entryKey = x;
+          const entry = data2[entryKey];
+
+          // Now you can access individual properties "+"
+          const mLink = entry.mLink;
+          const sLink = entry.sLink;
+          const time = entry.time;
+          const title = entry.title;
+          const type = entry.type;
+          const webService = entry.webService;
+
+          putFix += '<div class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700"><h5 class="mb-3 px-2 text-base font-semibold text-gray-900 md:text-xl dark:text-white">'+title+'</h5><ul class="my-4 space-y-3"><li><div class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP" id="clickP"><span class="line-clamp-1 flex-1 text-xs cursor-pointer" id="clickC">'+mLink+'</span><span id="rep" class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Copy</span></div></li><li><div class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP" id="clickP"><span class="line-clamp-1 flex-1 text-xs cursor-pointer" id="clickC">'+sLink+'</span><span id="rep" class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Copy</span></div></li></ul><p class="text-sm px-4 font-normal text-right text-gray-500 dark:text-gray-400">'+time+'</p></div>';
+          
+        }
+        document.getElementById("showFix").innerHTML = putFix;
+      });
+
+      // Get all elements with class "cop"
+      var divs = document.getElementsByClassName("clickP");
+
+      // Add click event listener to each div
+      for (var i = 0; i < divs.length; i++) {
+        divs[i].addEventListener("click", function () {
+          // Find the child div with id "nos" and copy its text
+          var clickC = this.querySelector("#clickC");
+          if (clickC) {
+            copyText(clickC.innerText);
+            var rep = this.querySelector("#rep");
+            rep.innerText = "copied";
+          }
+        });
+      }
+      // Function to copy text to the clipboard
+      function copyText(text) {
+        // Create a textarea element and set its value to the text
+        var textarea = document.createElement("textarea");
+        textarea.value = text;
+
+        // Append the textarea to the document
+        document.body.appendChild(textarea);
+
+        // Select the text in the textarea
+        textarea.select();
+        textarea.setSelectionRange(0, 99999); /* For mobile devices */
+
+        // Copy the selected text to the clipboard
+        document.execCommand("copy");
+
+        // Remove the textarea from the document
+        document.body.removeChild(textarea);
+
+        // Optionally, you can provide visual feedback to the user
+        //alert("Text copied: " + text);
+      }
+    </script>
+  </body>
+</html>
