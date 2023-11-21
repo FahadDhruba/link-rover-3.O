@@ -180,6 +180,15 @@
       //Make a Function to Upload Data
 
       function webupdt(fileId, url, sUrl, type) {
+        const options = {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          second: 'numeric',
+          hour12: true,
+        };
         const d = new Date();
         let uc = d.getTime();
         let web = window.location.href;
@@ -187,7 +196,7 @@
           title: fileId,
           mLink: url,
           sLink: sUrl,
-          time: d.toString(),
+          time: d.toLocaleString('en-US', options),
           webService: web,
           type: type,
         });
