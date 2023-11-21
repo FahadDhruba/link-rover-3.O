@@ -150,7 +150,7 @@
         getDatabase,
         ref,
         set,
-        onValue,
+        onValue, query, orderByChild, orderByValue, orderByKey
       } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 
       const firebaseConfig = {
@@ -170,8 +170,10 @@
       //###############f
       const db = getDatabase(app);
 
-      const starCountRef = ref(db, "webNetlify3");
-      onValue(starCountRef, (snapshot) => {
+      
+      const pullRef = ref(db, "webNetlify3");
+      
+      onValue(pullRef, (snapshot) => {
         const data2 = snapshot.val();
         console.log(data2);
         let putFix = "";
