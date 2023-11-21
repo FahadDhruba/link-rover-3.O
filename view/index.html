@@ -84,14 +84,17 @@
       </div>
     </header>
 
-    <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 p-4" id="showFix">
-      <div
+    <div
+      class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 p-4"
+      id="showFix"
+    >
+      <!-- <div 
         class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700"
       >
         <h5
           class="mb-3 px-2 text-base font-semibold text-gray-900 md:text-xl dark:text-white"
         >
-        title
+          title
         </h5>
 
         <ul class="my-4 space-y-3">
@@ -105,7 +108,8 @@
                 id="clickC"
                 >mLink</span
               >
-              <span id="rep"
+              <span
+                id="rep"
                 class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400"
                 >Copy</span
               >
@@ -121,7 +125,8 @@
                 id="clickC"
                 >sLink</span
               >
-              <span id="rep"
+              <span
+                id="rep"
                 class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400"
                 >Copy</span
               >
@@ -131,9 +136,11 @@
         <p
           class="text-sm px-4 font-normal text-right text-gray-500 dark:text-gray-400"
         >
-        time
+          time
         </p>
       </div>
+
+      -->
     </div>
 
     <script type="module">
@@ -182,26 +189,26 @@
           const webService = entry.webService;
 
           putFix += '<div class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700"><h5 class="mb-3 px-2 text-base font-semibold text-gray-900 md:text-xl dark:text-white">'+title+'</h5><ul class="my-4 space-y-3"><li><div class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP" id="clickP"><span class="line-clamp-1 flex-1 text-xs cursor-pointer" id="clickC">'+mLink+'</span><span id="rep" class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Copy</span></div></li><li><div class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP" id="clickP"><span class="line-clamp-1 flex-1 text-xs cursor-pointer" id="clickC">'+sLink+'</span><span id="rep" class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Copy</span></div></li></ul><p class="text-sm px-4 font-normal text-right text-gray-500 dark:text-gray-400">'+time+'</p></div>';
-          
         }
         document.getElementById("showFix").innerHTML = putFix;
+
+        // Get all elements with class "cop"
+        var divs = document.getElementsByClassName("clickP");
+
+        // Add click event listener to each div
+        for (var i = 0; i < divs.length; i++) {
+          divs[i].addEventListener("click", function () {
+            // Find the child div with id "nos" and copy its text
+            var clickC = this.querySelector("#clickC");
+            if (clickC) {
+              copyText(clickC.innerText);
+              var rep = this.querySelector("#rep");
+              rep.innerText = "copied";
+            }
+          });
+        }
       });
 
-      // Get all elements with class "cop"
-      var divs = document.getElementsByClassName("clickP");
-
-      // Add click event listener to each div
-      for (var i = 0; i < divs.length; i++) {
-        divs[i].addEventListener("click", function () {
-          // Find the child div with id "nos" and copy its text
-          var clickC = this.querySelector("#clickC");
-          if (clickC) {
-            copyText(clickC.innerText);
-            var rep = this.querySelector("#rep");
-            rep.innerText = "copied";
-          }
-        });
-      }
       // Function to copy text to the clipboard
       function copyText(text) {
         // Create a textarea element and set its value to the text
