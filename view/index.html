@@ -150,7 +150,11 @@
         getDatabase,
         ref,
         set,
-        onValue, query, orderByChild, orderByValue, orderByKey
+        onValue,
+        query,
+        orderByChild,
+        orderByValue,
+        orderByKey,
       } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 
       const firebaseConfig = {
@@ -170,14 +174,35 @@
       //###############f
       const db = getDatabase(app);
 
-      
       const pullRef = ref(db, "webNetlify3");
-      
+
       onValue(pullRef, (snapshot) => {
         const data2 = snapshot.val();
-        console.log(data2);
+        //console.log(data2);
+
+
+        // code to sort data2... 
+        const dataArray = Object.entries(data2).map(([key, value]) => ({
+          key,
+          ...value,
+        }));
+
+        // Sort array by time in descending order
+        dataArray.sort((a, b) => new Date(b.time) - new Date(a.time));
+
+        // Convert array back to object
+        const sortedData = dataArray.reduce((acc, curr) => {
+          const { key, ...rest } = curr;
+          acc[key] = rest;
+          return acc;
+        }, {});
+
+        //console.log(sortedData);
+
+        //sorting ends here
+
         let putFix = "";
-        for (let x in data2) {
+        for (let x in sortedData) {
           // Accessing data for a specific entry
           const entryKey = x;
           const entry = data2[entryKey];
