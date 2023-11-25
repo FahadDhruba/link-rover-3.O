@@ -46,46 +46,40 @@
   <!-- tailwind cdn script -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- font awsome cdn -->
+  <!-- font awesome cdn -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- title -->
   <title>Task Manager</title>
 </head>
 <body class="bg-slate-200 dark:bg-gray-800">
-  
-  
+
+  <!-- nav bar area starts -->
   <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-2">
-      <a href="https://linkrover.netlify.app/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="src/logo.png" class="h-8" alt="Flowbite Logo" />
-        <span class="m-1 self-center text-lg font-semibold whitespace-nowrap dark:text-white">Link Rover</span>
-         
-      </a>
-      <button id="dropbtn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-          </svg>
-      </button>
-     <!--- Drop down Bar ---->
-      <div class="hidden w-full md:block md:w-auto" id="dropid">
-        <ul class="font-medium flex flex-col p-2 md:p-0 mt-1 rounded-lg md:flex-row md:space-x-8 md:mt-0">
-          
-          <li>
-            <a href="https://linkrover.netlify.app/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rover</a>
-          </li>
-          <li>
-            <a href="https://linkrover.netlify.app/view/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rovered Links</a>
-          </li>
-          <li>
-            <a href="https://linkrover.netlify.app/tskm/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Task Manager</a>
-          </li>
-          
-        </ul>
-      </div>
+        <a href="https://linkrover.netlify.app/" class="flex items-center space-x-3 rtl:space-x-reverse"> <img src="src/logo.png" class="h-8" alt="Flowbite Logo" /> 
+          <span class="m-1 self-center text-lg font-semibold whitespace-nowrap dark:text-white">
+            Link Rover
+          </span> 
+        </a> 
+        <button id="dropbtn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span> 
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
+        </button>
+        <!--- Drop down Bar ----> 
+        <div class="hidden w-full md:block md:w-auto" id="dropid">
+            <ul class="font-medium flex flex-col p-2 md:p-0 mt-1 rounded-lg md:flex-row md:space-x-8 md:mt-0">
+                <li> <a href="https://linkrover.netlify.app/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rover</a> </li>
+                <li> <a href="https://linkrover.netlify.app/view/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rovered Links</a> </li>
+                <li> <a href="https://linkrover.netlify.app/tskm/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Task Manager</a> </li>
+            </ul>
+        </div>
     </div>
   </nav>
+
+  <!-- nav bar area ends -->
 
 <section class="w-full">
   <div class="p-2 my-4 mx-2 md:mx-40">
