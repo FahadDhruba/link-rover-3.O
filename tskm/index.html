@@ -55,6 +55,7 @@
 <body class="bg-slate-200 dark:bg-gray-800">
 
   <!-- nav bar area starts -->
+  
   <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-2">
         <a href="https://linkrover.netlify.app/" class="flex items-center space-x-3 rtl:space-x-reverse"> <img src="src/logo.png" class="h-8" alt="Flowbite Logo" /> 
@@ -81,24 +82,24 @@
 
   <!-- nav bar area ends -->
 
-<section class="w-full">
-  <div class="p-2 my-4 mx-2 md:mx-40">
-      
+  <!-- task input section starts -->
 
-    <label for="chat" class="sr-only">Your message</label>
-    <div class="flex items-center px-2 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
-        
-        
-        <textarea id="taskinp" rows="1" class="block mr-1 p-2 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."></textarea>
+  <section class="w-full">
+    <div class="p-2 my-4 mx-2 md:mx-40">
+        <label for="chat" class="sr-only">Your message</label>
+        <div class="flex items-center px-2 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
+            <textarea id="taskinp" rows="1" class="block mr-1 p-2 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."></textarea>
             <button id="taskbtn" type="submit" class="inline-flex justify-center p-1 text-blue-600 rounded-full cursor-pointer dark:text-blue-500">
-            
-            <svg class="w-5 h-5 rotate-90" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
-            <span class="sr-only">Send message</span>
-        </button>
+                <svg class="w-5 h-5 rotate-90" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+                </svg>
+                <span class="sr-only">Send message</span>
+            </button>
+        </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- task input section ends -->
  
 <section class="mx-2">
    <div id="supremeDiv" class="p-1 mx-2 my-4 md:mx-40 rounded-lg bg-gray-50 dark:bg-gray-700">
