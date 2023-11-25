@@ -192,9 +192,11 @@
           const eid = "e"+title;
           const did = "d"+title;
 
+          const statid = "stat"+title;
 
-          var status0 ='<svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/></svg> <span id="stat" class="sr-only">0</span>'
-          var status1 ='<svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg> <span id="stat" class="sr-only">1</span>'
+
+          var status0 =`<svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/></svg> <span id="${statid}" class="sr-only">0</span>`
+          var status1 =`<svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg> <span id="${statid}" class="sr-only">1</span>`
 
           let statusF = "n";
           if (status === 0) {
@@ -203,7 +205,7 @@
             statusF = status1;
           }
 
-          supreme += `<div class="m-1 block p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"> <div class="flex items-center"> <button id="${sid}" class="text-green-600 p-1 idbtn"> ${statusF} </button> <p id="${cid}" class="font-normal px-2 font-bold text-md text-gray-700 dark:text-gray-400"> ${figtask} </p> </div> <div class="flex items-center"> <p class="font-bold px-2 w-full text-sm text-right text-gray-500 dark:text-gray-500"> ${time} </p> <span class="px-1 text-gray-800 dark:text-gray-200">•</span> <button id="${did}" class="text-red-600 p-1 idbtn"> <svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"/></svg> <span class="sr-only">delete</span> </button> </div> </div>`;
+          supreme += `<div class="m-1 block p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"> <div class="flex items-center"> <button id="${sid}" class="text-green-600 p-1 idbtn"> ${statusF} <span id="spid" class="sr-only">${sid}</span> </button> <p id="${cid}" class="font-normal px-2 font-bold text-md text-gray-700 dark:text-gray-400"> ${figtask} </p> </div> <div class="flex items-center"> <p class="font-bold px-2 w-full text-sm text-right text-gray-500 dark:text-gray-500"> ${time} </p> <span class="px-1 text-gray-800 dark:text-gray-200">•</span> <button id="${did}" class="text-red-600 p-1 idbtn"> <svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"/></svg> <span class="sr-only">delete</span> </button> </div> </div>`;
          }
         document.getElementById("supremeDiv").innerHTML = supreme;
         //click id
@@ -212,10 +214,15 @@
 
         // Add click event listener to each div
         for (var i = 0; i < divs.length; i++) {
-          divs[i].addEventListener("click", function () {
+          divs[i].addEventListener("click", function (divs, i) {
             // Find the child div with id "nos" and copy its text
             var pid = this.id;
+
+            
             processOperend(pid);
+            
+            
+            
           });
         }
       }
@@ -255,7 +262,7 @@
       function tskmSupdt(icot, stat) {
         const dbRef = ref(db, "tskmNetlify3/" + icot)
         update(dbRef, {status: stat}).then(() => {
-           console.log("Data updated");
+           //console.log("Data updated");
         }).catch((e) => {
            console.log(e);
         })
@@ -287,13 +294,14 @@
         }else if (proc === "s") {
 
 
-          let stat
-          var cStat = document.getElementById("stat").innerHTML;
+          var statidCall = "stat"+icot;
+          var stat
+          var cStat = document.getElementById(statidCall).innerHTML;
           console.log(cStat);
-          if (cStat == "1") {
-            stat = 0;
-          } else if (cStat == "0") {
+          if (cStat === "0") {
             stat = 1;
+          } else if (cStat === "1") {
+            stat = 0;
           }
 
           tskmSupdt(icot, stat);
