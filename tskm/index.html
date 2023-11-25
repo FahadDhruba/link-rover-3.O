@@ -266,11 +266,16 @@
 
       function putFunction() {
          var taskVal = document.getElementById("taskinp").value;
-         console.log(taskVal);
-         var figtask = taskVal.replace(/\n/g, '<br>');
+         
+         if (taskVal == "") {
+          
+         } else {
+            var figtask = taskVal.replace(/\n/g, '<br>');
 
-         tskmupdt(figtask);
-         document.getElementById("taskinp").value="";
+            tskmupdt(figtask);
+            document.getElementById("taskinp").value="";
+         }
+         
       }
 
       function processOperend(pid) {
