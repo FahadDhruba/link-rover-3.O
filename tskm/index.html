@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Task Manager</title>
+</head>
+<body class="bg-slate-200 dark:bg-gray-800">
+  
+  
+<nav class="bg-white border-gray-200 dark:bg-gray-900">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-2">
+    <a href="https://linkrover.netlify.app/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="src/logo.png" class="h-8" alt="Flowbite Logo" />
+      <span class="m-1 self-center text-lg font-semibold whitespace-nowrap dark:text-white">Link Rover</span>
+       
+    </a>
+    <button id="dropbtn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+   <!--- Drop down Bar ---->
+    <div class="hidden w-full md:block md:w-auto" id="dropid">
+      <ul class="font-medium flex flex-col p-2 md:p-0 mt-1 rounded-lg md:flex-row md:space-x-8 md:mt-0">
+        
+        <li>
+          <a href="https://linkrover.netlify.app/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rover</a>
+        </li>
+        <li>
+          <a href="https://linkrover.netlify.app/view" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rovered Links</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Task Manager</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="w-full">
+  <div class="p-2 my-4 mx-2 md:mx-40">
+      
+
+    <label for="chat" class="sr-only">Your message</label>
+    <div class="flex items-center px-2 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
+        
+        
+        <textarea id="taskinp" rows="1" class="block mr-1 p-2 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."></textarea>
+            <button id="taskbtn" type="submit" class="inline-flex justify-center p-1 text-blue-600 rounded-full cursor-pointer dark:text-blue-500">
+            
+            <svg class="w-5 h-5 rotate-90" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+            <span class="sr-only">Send message</span>
+        </button>
+    </div>
+
+  </div>
+</section>
+ 
+<section class="mx-2">
+   <div id="supremeDiv" class="p-1 mx-2 my-4 md:mx-40 rounded-lg bg-gray-50 dark:bg-gray-700">
+     
+     
+     
+     <div class="w-full">
+      <img class="text-center w-8 m-auto my-4" src="src/loading.gif" alt="none">
+     </div>
+     
+     
+   </div>
+</section>
+ 
+
+
+
+    <footer class="text-gray-800 dark:text-gray-100 py-4 w-full">
+      <div class="container mx-auto text-center">
+          <p class="text-sm">© 2023 <a href="https://github.com/FahadDhruba/" class="hover:underline">Fahad Alamgir Dhruba</a>. All rights reserved.</p>
+      </div>
+    </footer>
+    
+    
+  <script>
+  
+  var dropbtn = document.getElementById("dropbtn");
+
+  dropbtn.addEventListener("click", dropper);
+
+  function dropper() {
+     var dropid = document.getElementById("dropid");
+     dropid.classList.toggle("hidden");
+  }
+  
+    
+    
+    
+    
+    
+
+  </script>
+  
+  
+  
+  
+  <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        onValue,
+        update
+      } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+ 
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0z9y5NuCs2OTHo5akeIV5-hQYRvpOXmE",
+        authDomain: "link-rover-3.firebaseapp.com",
+        databaseURL: "https://link-rover-3-default-rtdb.firebaseio.com",
+        projectId: "link-rover-3",
+        storageBucket: "link-rover-3.appspot.com",
+        messagingSenderId: "715683693672",
+        appId: "1:715683693672:web:0d86f9370a7949095727dd",
+        measurementId: "G-CPTVR03Q63",
+      };
+      
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+ 
+      //Initialise Database
+ 
+      const db = getDatabase(app);
+
+      //get dt
+
+      const pullRef = ref(db, "tskmNetlify3");
+
+      onValue(pullRef, (snapshot) => {
+        const data3 = snapshot.val();
+        //console.log(data2);
+
+
+        if (data3 === null) {
+          console.log("null");
+          let supreme = '<div> <img class="w-full" src="src/oops2.gif" alt="oops"> <h4 class="w-full text-gray-800 -mt-8 text-center font-bold text-lg">Sorry No Task Found...!!!</h4> </div>';
+
+          document.getElementById("supremeDiv").innerHTML = supreme;
+
+        } else {
+          
+        
+        
+          // code to sort data2... 
+        const dataArray = Object.entries(data3).map(([key, value]) => ({
+          key,
+          ...value,
+        }));
+
+        // Sort array by time in descending order
+        dataArray.sort((a, b) => new Date(b.time) - new Date(a.time));
+
+        // Convert array back to object
+        const sortedData = dataArray.reduce((acc, curr) => {
+          const { key, ...rest } = curr;
+          acc[key] = rest;
+          return acc;
+        }, {});
+
+        console.log(sortedData);
+        
+        
+
+        //sorting ends here
+
+        let supreme = "";
+        for (let x in sortedData) {
+          // Accessing data for a specific entry
+          const entryKey = x;
+          const entry = data3[entryKey];
+
+
+          
+
+          const title = entry.title;
+          const figtask = entry.figtask;
+          const time = entry.time;
+          const status = entry.status;
+          const webService = entry.webService;
+
+          const sid = "s"+title;
+          const cid = "c"+title;
+          const eid = "e"+title;
+          const did = "d"+title;
+
+
+          var status0 ='<svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/></svg> <span id="stat" class="sr-only">0</span>'
+          var status1 ='<svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg> <span id="stat" class="sr-only">1</span>'
+
+          let statusF = "n";
+          if (status === 0) {
+            statusF = status0;
+          } else {
+            statusF = status1;
+          }
+
+          supreme += `<div class="m-1 block p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"> <div class="flex items-center"> <button id="${sid}" class="text-green-600 p-1 idbtn"> ${statusF} </button> <p id="${cid}" class="font-normal px-2 font-bold text-md text-gray-700 dark:text-gray-400"> ${figtask} </p> </div> <div class="flex items-center"> <p class="font-bold px-2 w-full text-sm text-right text-gray-500 dark:text-gray-500"> ${time} </p> <span class="px-1">•</span> <button id="${did}" class="text-red-600 p-1 idbtn"> <svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"/></svg> <span class="sr-only">delete</span> </button> </div> </div>`;
+         }
+        document.getElementById("supremeDiv").innerHTML = supreme;
+        //click id
+
+        var divs = document.getElementsByClassName("idbtn");
+
+        // Add click event listener to each div
+        for (var i = 0; i < divs.length; i++) {
+          divs[i].addEventListener("click", function () {
+            // Find the child div with id "nos" and copy its text
+            var pid = this.id;
+            processOperend(pid);
+          });
+        }
+      }
+        
+      });
+ 
+      //Make a Function to Upload Data
+      
+      function tskmupdt(figtask) {
+        const options = {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          second: 'numeric',
+          hour12: true,
+        };
+        const d = new Date();
+        let uc = d.getTime();
+        let web = window.location.href;
+        set(ref(db, "tskmNetlify3/" + uc), {
+          title: uc,
+          figtask: figtask,
+          status: 0,
+          time: d.toLocaleString('en-US', options),
+          webService: web,
+        });
+      }
+
+      function tskmdlt(icot) {
+        set(ref(db, "tskmNetlify3/" + icot), {
+
+        });
+      }
+
+      function tskmSupdt(icot, stat) {
+        const dbRef = ref(db, "tskmNetlify3/" + icot)
+        update(dbRef, {status: stat}).then(() => {
+           console.log("Data updated");
+        }).catch((e) => {
+           console.log(e);
+        })
+      }
+      
+      var taskbtn = document.getElementById("taskbtn")
+      taskbtn.addEventListener("click", putFunction);
+
+      function putFunction() {
+         var taskVal = document.getElementById("taskinp").value;
+         console.log(taskVal);
+         var figtask = taskVal.replace(/\n/g, '<br>');
+
+         tskmupdt(figtask);
+          
+      }
+
+      function processOperend(pid) {
+        var proc = pid.substring(0,1);
+        var icot = pid.substring(1);
+
+        if (proc === "d") {
+          tskmdlt(icot);
+        }else if (proc === "s") {
+
+
+          let stat
+          var cStat = document.getElementById("stat").innerHTML;
+          console.log(cStat);
+          if (cStat == "1") {
+            stat = 0;
+          } else if (cStat == "0") {
+            stat = 1;
+          }
+
+          
+
+          tskmSupdt(icot, stat);
+        } else if (proc === "e") {
+          
+        }
+        
+      }
+    </script>     
+      
+</body>
+</html>
