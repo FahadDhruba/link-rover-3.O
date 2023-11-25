@@ -197,7 +197,7 @@
       }
      
       </script>
-      
+
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
@@ -236,6 +236,13 @@
         //console.log(data2);
 
 
+        if (data3 === null) {
+          console.log("null");
+          let supreme = '<div> <img class="w-full" src="src/oops2.gif" alt="oops"> <h4 class="w-full text-gray-800 -mt-8 text-center font-bold text-lg">Sorry No Task Found...!!!</h4> </div>';
+
+          document.getElementById("supremeDiv").innerHTML = supreme;
+
+        } else {
         // code to sort data2... 
         const dataArray = Object.entries(data2).map(([key, value]) => ({
           key,
@@ -289,6 +296,7 @@
             }
           });
         }
+      }
       });
 
       // Function to copy text to the clipboard
