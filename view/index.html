@@ -56,112 +56,57 @@
 
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-2">
-        <a href="https://linkrover.netlify.app/" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <a href="https://linkrover.netlify.app/" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="src/logo.png" class="h-8" alt="Flowbite Logo" />
           <span class="m-1 self-center text-lg font-semibold whitespace-nowrap dark:text-white">Link Rover</span>
-           
-        </a>
-        <button id="dropbtn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-            </svg>
-        </button>
-       <!--- Drop down Bar ---->
-        <div class="hidden w-full md:block md:w-auto" id="dropid">
-          <ul class="font-medium flex flex-col p-2 md:p-0 mt-1 rounded-lg md:flex-row md:space-x-8 md:mt-0">
-            
-            <li>
-              <a href="https://linkrover.netlify.app/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rover</a>
-            </li>
-            <li>
-              <a href="https://linkrover.netlify.app/view/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rovered Links</a>
-            </li>
-            <li>
-              <a href="https://linkrover.netlify.app/tskm/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Task Manager</a>
-            </li>
-            
-          </ul>
-        </div>
+          </a>
+          <button id="dropbtn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+          </button>
+          <!--- Drop down Bar ---->
+          <div class="hidden w-full md:block md:w-auto" id="dropid">
+              <ul class="font-medium flex flex-col p-2 md:p-0 mt-1 rounded-lg md:flex-row md:space-x-8 md:mt-0">
+                  <li>
+                      <a href="https://linkrover.netlify.app/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rover</a>
+                  </li>
+                  <li>
+                      <a href="https://linkrover.netlify.app/view/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Rovered Links</a>
+                  </li>
+                  <li>
+                      <a href="https://linkrover.netlify.app/tskm/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Task Manager</a>
+                  </li>
+              </ul>
+          </div>
       </div>
-    </nav>
+  </nav>
 
 
 
 
-    <header class="text-gray-800 dark:text-gray-200 py-4 w-full">
+  <header class="text-gray-800 dark:text-gray-200 py-4 w-full">
       <div class="container mx-auto text-center">
-        <h5 class="text-lg font-semibold">Rovered Links</h5>
-        <span
-          class="absolute w-16 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"
-        ></span>
+          <h5 class="text-lg font-semibold">Rovered Links</h5>
+          <span
+              class="absolute w-16 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"
+              ></span>
       </div>
-    </header>
+  </header>
 
-    <div
-      class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 p-4"
-      id="showFix"
-    >
-      <!-- <div 
-        class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700"
-      >
-        <h5
-          class="mb-3 px-2 text-base font-semibold text-gray-900 md:text-xl dark:text-white break-words"
-        >
-          title
-        </h5>
 
-        <ul class="my-4 space-y-3">
-          <li>
-            <div
-              class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP"
-              id="clickP"
-            >
-              <span
-                class="line-clamp-1 flex-1 text-xs cursor-pointer"
-                id="clickC"
-                >mLink</span
-              >
-              <span
-                id="rep"
-                class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400"
-                >Copy</span
-              >
-            </div>
-          </li>
-          <li>
-            <div
-              class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP"
-              id="clickP"
-            >
-              <span
-                class="line-clamp-1 flex-1 text-xs cursor-pointer"
-                id="clickC"
-                >sLink</span
-              >
-              <span
-                id="rep"
-                class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400"
-                >Copy</span
-              >
-            </div>
-          </li>
-        </ul>
-        <p
-          class="text-sm px-4 font-normal text-right text-gray-500 dark:text-gray-400"
-        >
-          time
-        </p>
-      </div>
+  <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 p-4" id="showFix">
+  
+  </div>
 
-      -->
-    </div>
 
-    <footer class="text-gray-800 dark:text-gray-100 py-4 w-full">
+
+  <footer class="text-gray-800 dark:text-gray-100 py-4 w-full">
       <div class="container mx-auto text-center">
           <p class="text-sm">&copy; 2023 <a href="https://github.com/FahadDhruba/" class="hover:underline">Fahad Alamgir Dhruba</a>. All rights reserved.</p>
       </div>
-    </footer>
+  </footer>
 
     <script>
   
