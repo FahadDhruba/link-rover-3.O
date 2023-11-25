@@ -55,7 +55,7 @@
 <body class="bg-slate-200 dark:bg-gray-800">
 
   <!-- nav bar area starts -->
-  
+
   <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-2">
         <a href="https://linkrover.netlify.app/" class="flex items-center space-x-3 rtl:space-x-reverse"> <img src="src/logo.png" class="h-8" alt="Flowbite Logo" /> 
@@ -101,55 +101,56 @@
 
   <!-- task input section ends -->
  
-<section class="mx-2">
-   <div id="supremeDiv" class="p-1 mx-2 my-4 md:mx-40 rounded-lg bg-gray-50 dark:bg-gray-700">
-     
-     
-     
-     <div class="w-full">
-      <img class="text-center w-8 m-auto my-4" src="src/loading.gif" alt="none">
-     </div>
-     
-     
-   </div>
-</section>
+  <!-- task showing section starts {supremeDiv container} -->
+
+  <section class="mx-2">
+    <div id="supremeDiv" class="p-1 mx-2 my-4 md:mx-40 rounded-lg bg-gray-50 dark:bg-gray-700">
+        <div class="w-full">
+            <img class="text-center w-8 m-auto my-4" src="src/loading.gif" alt="none">
+        </div>
+    </div>
+  </section>
+
+  <!-- task showing section ends -->
  
 
+  <!-- footer starts here -->
 
+  <footer class="text-gray-800 dark:text-gray-100 py-4 w-full">
+    <div class="container mx-auto text-center">
+        <p class="text-sm">© 2023 <a href="https://github.com/FahadDhruba/" class="hover:underline">Fahad Alamgir Dhruba</a>. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <footer class="text-gray-800 dark:text-gray-100 py-4 w-full">
-      <div class="container mx-auto text-center">
-          <p class="text-sm">© 2023 <a href="https://github.com/FahadDhruba/" class="hover:underline">Fahad Alamgir Dhruba</a>. All rights reserved.</p>
-      </div>
-    </footer>
+  <!-- footer ends here -->
     
     
   <script>
-  
-  var dropbtn = document.getElementById("dropbtn");
 
-  dropbtn.addEventListener("click", dropper);
+    //script for dropdown starts 
 
-  function dropper() {
-     var dropid = document.getElementById("dropid");
-     dropid.classList.toggle("hidden");
-  }
- 
+    var dropbtn = document.getElementById("dropbtn");
+    
+    dropbtn.addEventListener("click", dropper);
+    
+    function dropper() {
+       var dropid = document.getElementById("dropid");
+       dropid.classList.toggle("hidden");
+    }
+    
+    //script for dropdown starts 
   </script>
   
   
   
   
   <script type="module">
+
+      //import things
+
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
-      import {
-        getDatabase,
-        ref,
-        set,
-        onValue,
-        update
-      } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+      import { getDatabase, ref, set, onValue, update } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
  
       const firebaseConfig = {
         apiKey: "AIzaSyD0z9y5NuCs2OTHo5akeIV5-hQYRvpOXmE",
@@ -170,98 +171,118 @@
  
       const db = getDatabase(app);
 
-      //get dt
+      //# code to fetch data from firebase
+
+      //creating reference
 
       const pullRef = ref(db, "tskmNetlify3");
 
-      onValue(pullRef, (snapshot) => {
-        const data3 = snapshot.val();
-        //console.log(data2);
+      //pulling data via onValue
 
+      onValue(pullRef, (snapshot) => {
+
+        const data3 = snapshot.val();
+        
+        //condition
 
         if (data3 === null) {
-          console.log("null");
-          let supreme = '<div class="p-4"> <img class="w-full rounded" src="src/oops2.gif" alt="oops"> <h4 class="w-full text-gray-800 -mt-8 text-center font-bold text-lg">Sorry No Task Found...!!!</h4> </div>';
 
+          // condition { if data is null then show null div} 
+
+          let nullDiv = '<div id="nullDiv" class="p-4"> <img class="w-full rounded" src="src/oops2.gif" alt="oops"> <h4 class="w-full text-gray-800 -mt-8 text-center font-bold text-lg">Sorry No Task Found...!!!</h4> </div>';
+
+          //push nullDiv into supremeDiv
           document.getElementById("supremeDiv").innerHTML = supreme;
 
         } else {
           
-        
-        
-          // code to sort data2... 
-        const dataArray = Object.entries(data3).map(([key, value]) => ({
-          key,
-          ...value,
-        }));
+          // condition { if data is not null then sort data & show it through supremeDiv} 
+                
+          //# code to sort data... 
+          const dataArray = Object.entries(data3).map(([key, value]) => ({
+            key, ...value,
+          }));
 
-        // Sort array by time in descending order
-        dataArray.sort((a, b) => new Date(b.time) - new Date(a.time));
+          // Sort array by time in descending order
+          dataArray.sort((a, b) => new Date(b.time) - new Date(a.time));
 
-        // Convert array back to object
-        const sortedData = dataArray.reduce((acc, curr) => {
-          const { key, ...rest } = curr;
-          acc[key] = rest;
-          return acc;
-        }, {});
+          // Convert array back to object
+          const sortedData = dataArray.reduce((acc, curr) => {
+            const { key, ...rest } = curr;
+            acc[key] = rest;
+            return acc;
+          }, {});
 
-        //console.log(sortedData);
-        
-        
+          //code sorting end... The sorted object of data is accessable through sortedData
 
-        //sorting ends here
+          //# pushing facility starts here
 
-        let supreme = "";
-        for (let x in sortedData) {
-          // Accessing data for a specific entry
-          const entryKey = x;
-          const entry = data3[entryKey];
-
-
+          // {supreme} variable to contain pushable Data
+          let supreme = "";
           
+          // loop through sorted Data
 
-          const title = entry.title;
-          const figtask = entry.figtask;
-          const time = entry.time;
-          const status = entry.status;
-          const webService = entry.webService;
+          for (let x in sortedData) {
+          
+            // Accessing data for a specific entry
+            const entryKey = x;
+            const entry = data3[entryKey];
 
-          const sid = "s"+title;
-          const cid = "c"+title;
-          const eid = "e"+title;
-          const did = "d"+title;
+            // Gather all Data into variables
 
-          const statid = "stat"+title;
+            const title = entry.title;
+            const figtask = entry.figtask;
+            const time = entry.time;
+            const status = entry.status;
+            const webService = entry.webService;
 
+            //creating ID
 
-          var status0 =`<svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/></svg> <span id="${statid}" class="sr-only">0</span>`
-          var status1 =`<svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg> <span id="${statid}" class="sr-only">1</span>`
+            const sid = "s"+title;
+            const cid = "c"+title;
+            const eid = "e"+title;
+            const did = "d"+title;
+            const statid = "stat"+title;
 
-          let statusF = "n";
-          if (status === 0) {
-            statusF = status0;
-          } else {
-            statusF = status1;
+            // status HTML 
+            var status0 =`<svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/></svg> <span id="${statid}" class="sr-only">0</span>`
+            var status1 =`<svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg> <span id="${statid}" class="sr-only">1</span>`
+
+            let statusF = "";
+            if (status === 0) {
+              statusF = status0;
+            } else {
+              statusF = status1;
+            }
+
+            // putting Data to pushing container
+
+            supreme += `<div class="m-1 block p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"> <div class="flex items-center"> <button id="${sid}" class="text-green-600 p-1 idbtn"> ${statusF} <span id="spid" class="sr-only">${sid}</span> </button> <p id="${cid}" class="font-normal px-2 font-bold text-md text-gray-700 dark:text-gray-400"> ${figtask} </p> </div> <div class="flex items-center"> <p class="font-bold px-2 w-full text-sm text-right text-gray-500 dark:text-gray-500"> ${time} </p> <span class="px-1 text-gray-800 dark:text-gray-200">•</span> <button id="${did}" class="text-red-600 p-1 idbtn"> <svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"/></svg> <span class="sr-only">delete</span> </button> </div> </div>`;
+          
           }
+          
+          document.getElementById("supremeDiv").innerHTML = supreme;
+        
 
-          supreme += `<div class="m-1 block p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"> <div class="flex items-center"> <button id="${sid}" class="text-green-600 p-1 idbtn"> ${statusF} <span id="spid" class="sr-only">${sid}</span> </button> <p id="${cid}" class="font-normal px-2 font-bold text-md text-gray-700 dark:text-gray-400"> ${figtask} </p> </div> <div class="flex items-center"> <p class="font-bold px-2 w-full text-sm text-right text-gray-500 dark:text-gray-500"> ${time} </p> <span class="px-1 text-gray-800 dark:text-gray-200">•</span> <button id="${did}" class="text-red-600 p-1 idbtn"> <svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"/></svg> <span class="sr-only">delete</span> </button> </div> </div>`;
-         }
-        document.getElementById("supremeDiv").innerHTML = supreme;
-        //click id
+          //# code to make all button react on click seperatly
+          
+          // select all button that contain 'idbtn' class
 
-        var divs = document.getElementsByClassName("idbtn");
+          var divs = document.getElementsByClassName("idbtn");
 
-        // Add click event listener to each div
-        for (var i = 0; i < divs.length; i++) {
-          divs[i].addEventListener("click", function (divs, i) {
-            // Find the child div with id "nos" and copy its text
-            var pid = this.id;
+          // Add click event listener to each Button
+        
+          for (var i = 0; i < divs.length; i++) {
+            divs[i].addEventListener("click", function () {
 
-            
-            processOperend(pid);
-            
-            
-            
+              // Find Button's Id when its clicked
+
+              var pid = this.id;
+
+              // send the ID to work on the basis of its type
+
+              processOperend(pid);
+                          
           });
         }
       }
