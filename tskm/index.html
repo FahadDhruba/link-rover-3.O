@@ -282,16 +282,17 @@
               // send the ID to work on the basis of its type
 
               processOperend(pid);
-                          
+
           });
         }
       }
         
       });
  
+
       //Make a Function to Upload Data
       
-      function tskmupdt(figtask) {
+      function tskminpt(figtask) {
         const options = {
           year: 'numeric',
           month: 'short',
@@ -313,11 +314,15 @@
         });
       }
 
+      // Function to DELETE Data
+
       function tskmdlt(icot) {
         set(ref(db, "tskmNetlify3/" + icot), {
 
         });
       }
+
+      // Function to UPDaTE Data
 
       function tskmSupdt(icot, stat) {
         const dbRef = ref(db, "tskmNetlify3/" + icot)
@@ -328,45 +333,61 @@
         })
       }
       
+      //# code to insert data to data base through {tskminpt() function}
+
       var taskbtn = document.getElementById("taskbtn")
+
       taskbtn.addEventListener("click", putFunction);
 
       function putFunction() {
-         var taskVal = document.getElementById("taskinp").value;
+        var taskVal = document.getElementById("taskinp").value;
          
-         if (taskVal == "") {
+        if (taskVal == "") {
           
-         } else {
-            var figtask = taskVal.replace(/\n/g, '<br>');
+        } else {
+          var figtask = taskVal.replace(/\n/g, '<br>');
 
-            tskmupdt(figtask);
-            document.getElementById("taskinp").value="";
-         }
-         
+          tskminpt(figtask);
+      
+          document.getElementById("taskinp").value="";
+      
+        }
       }
+
+      // Function to change status & delete task
 
       function processOperend(pid) {
         var proc = pid.substring(0,1);
         var icot = pid.substring(1);
 
         if (proc === "d") {
-          tskmdlt(icot);
-        }else if (proc === "s") {
 
+          // Call function to delete Data
+
+          tskmdlt(icot);
+
+        } else if (proc === "s") {
 
           var statidCall = "stat"+icot;
+          
           var stat
+          
           var cStat = document.getElementById(statidCall).innerHTML;
-          console.log(cStat);
+          
           if (cStat === "0") {
+          
             stat = 1;
+          
           } else if (cStat === "1") {
+          
             stat = 0;
+          
           }
 
+          // Call function to Update Data
+          
           tskmSupdt(icot, stat);
 
-          
         } 
         
       }
