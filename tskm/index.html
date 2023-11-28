@@ -68,6 +68,7 @@
 
           <button type="button" class="px-1 md:px-3 flex text-sm rounded-full md:me-0">
             <span id="userName" class="py-1.5 font-semibold px-2 hidden md:block"></span>
+            <span id="userUID" class="sr-only"></span>
             <img id="userImg" class="w-8 h-8 rounded-full" src="../images/white.png" alt="user photo">
           </button>
 
@@ -205,29 +206,30 @@
           
           // User is signed in
           
-          const uid = user.uid;
+          document.getElementById("userUID").innerHTML = user.uid;
 
           document.getElementById("userName").innerHTML = user.displayName ;
-          //photoURL
+          
           document.getElementById("userImg").src = user.photoURL;
-
-          console.log("signed");
 
         } else {
           
           // User is signed out
           
-          console.log("no");
           window.location.href = "../signin/"
 
         }
       });
 
+      // Getting UID of user
+
+      var userID = document.getElementById("userUID").innerHTML
+
       //# code to fetch data from firebase
 
       //creating reference
 
-      const pullRef = ref(db, "tskmNetlify3");
+      const pullRef = ref(db, "tskmNetlify3/"+userID);
 
       //pulling data via onValue
 
@@ -358,7 +360,8 @@
         const d = new Date();
         let uc = d.getTime();
         let web = window.location.href;
-        set(ref(db, "tskmNetlify3/" + uc), {
+        var userIDinpt = document.getElementById("userUID").innerHTML;
+        set(ref(db, "tskmNetlify3/" + userIDinpt + "/" + uc), {
           title: uc,
           figtask: figtask,
           status: 0,
@@ -370,7 +373,8 @@
       // Function to DELETE Data
 
       function tskmdlt(icot) {
-        set(ref(db, "tskmNetlify3/" + icot), {
+        var userIDdlt = document.getElementById("userUID").innerHTML;
+        set(ref(db, "tskmNetlify3/" + userIDdlt + "/" + icot), {
 
         });
       }
@@ -378,7 +382,8 @@
       // Function to UPDaTE Data
 
       function tskmSupdt(icot, stat) {
-        const dbRef = ref(db, "tskmNetlify3/" + icot)
+        var userIDupdt = document.getElementById("userUID").innerHTML
+        const dbRef = ref(db, "tskmNetlify3/" + userIDupdt + "/" + icot)
         update(dbRef, {status: stat}).then(() => {
            //console.log("Data updated");
         }).catch((e) => {

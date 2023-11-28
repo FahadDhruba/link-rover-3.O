@@ -66,6 +66,7 @@
   
             <button type="button" class="px-1 md:px-3 flex text-sm rounded-full md:me-0">
               <span id="userName" class="py-1.5 font-semibold px-2 hidden md:block"></span>
+              <span id="userUID" class="sr-only"></span>
               <img id="userImg" class="w-8 h-8 rounded-full" src="../images/white.png" alt="user photo">
             </button>
   
@@ -172,26 +173,23 @@
         if (user) {
           
           // User is signed in
+
+          document.getElementById("userUID").innerHTML = user.uid;
+
+          document.getElementById("userName").innerHTML = user.displayName;
           
-          const uidn = user.uid;
-
-          document.getElementById("userName").innerHTML = user.displayName ;
-          //photoURL
           document.getElementById("userImg").src = user.photoURL;
-
-          console.log("signed");
 
         } else {
           
           // User is signed out
           
-          console.log("no");
           window.location.href = "../signin/"
 
         }
       });
 
-      console.log("uidn");
+      
 
       const pullRef = ref(db, "webNetlify3");
 
