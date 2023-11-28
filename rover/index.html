@@ -162,11 +162,8 @@
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
-      import {
-        getDatabase,
-        ref,
-        set, 
-      } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+      import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+      import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithRedirect, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
 
       const firebaseConfig = {
         apiKey: "AIzaSyD0z9y5NuCs2OTHo5akeIV5-hQYRvpOXmE",
@@ -186,6 +183,37 @@
       //Initialise Database
 
       const db = getDatabase(app);
+
+      // auth setup
+      
+      const auth = getAuth();
+      
+      auth.languageCode = "it";
+
+      const provider = new GoogleAuthProvider();
+
+      // Check user signed in or not
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          
+          // User is signed in
+          
+          const uid = user.uid;
+          // ...
+
+          console.log("s ined");
+          
+        } else {
+          
+          // User is signed out
+          
+          console.log("no");
+          window.location.href = "../signin/"
+
+        }
+      });
+
 
       //Make a Function to Upload Data
 

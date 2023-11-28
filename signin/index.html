@@ -133,14 +133,16 @@
           uid: uid,
           phoneNumber: phoneNumber,
           pool: pool,
+        })
+        .then(() => {
+          // Data saved successfully!
+          document.getElementById("res").innerHTML = "Signing you In..."
+
+          window.location.href = "../rover/";
+        })
+        .catch((error) => {
+          // The write failed...
         });
-        
-        document.getElementById("res").innerHTML = "Signing you In..."
-        setTimeout(
-            function() {
-                window.location.href = "../rover/";
-            }, 5000
-        );
         
       }
 
