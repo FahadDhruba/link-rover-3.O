@@ -123,23 +123,21 @@
   </footer>
 
     <script>
-  
       var dropbtn = document.getElementById("dropbtn");
-    
+
       dropbtn.addEventListener("click", dropper);
-    
+
       function dropper() {
-         var dropid = document.getElementById("dropid");
-         dropid.classList.toggle("hidden");
+        var dropid = document.getElementById("dropid");
+        dropid.classList.toggle("hidden");
       }
-     
-      </script>
+    </script>
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
-      import { getDatabase, ref, set, onValue, query, orderByChild, orderByValue, orderByKey, } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
-      import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithRedirect, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+      import { getDatabase, ref, set, onValue, query, orderByChild, orderByValue, orderByKey, } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js"; 
+      import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithRedirect, onAuthStateChanged, } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
 
       const firebaseConfig = {
         apiKey: "AIzaSyD0z9y5NuCs2OTHo5akeIV5-hQYRvpOXmE",
@@ -158,11 +156,10 @@
       //###############f
       const db = getDatabase(app);
 
-
       // auth setup
-      
+
       const auth = getAuth();
-      
+
       auth.languageCode = "it";
 
       const provider = new GoogleAuthProvider();
@@ -171,118 +168,111 @@
 
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          
           // User is signed in
 
           document.getElementById("userUID").innerHTML = user.uid;
 
           document.getElementById("userName").innerHTML = user.displayName;
-          
+
           document.getElementById("userImg").src = user.photoURL;
 
-        } else {
-          
-          // User is signed out
-          
-          window.location.href = "../signin/"
+          const pullRef = ref(db, "webNetlify3/" + userIDget);
 
-        }
-      });
+          onValue(pullRef, (snapshot) => {
+            const data2 = snapshot.val();
+            //console.log(data2);
 
-      
+            if (data2 === null) {
+              console.log("null");
+              let supreme = '<div> <img class="w-full" src="src/oops2.gif" alt="oops"> <h4 class="w-full text-gray-800 -mt-8 text-center font-bold text-lg">Sorry No Task Found...!!!</h4> </div>';
 
-      const pullRef = ref(db, "webNetlify3");
+              document.getElementById("showFix").innerHTML = supreme;
+            } else {
+              // code to sort data2...
+              const dataArray = Object.entries(data2).map(([key, value]) => ({
+                key,
+                ...value,
+              }));
 
-      onValue(pullRef, (snapshot) => {
-        const data2 = snapshot.val();
-        //console.log(data2);
+              // Sort array by time in descending order
+              dataArray.sort((a, b) => new Date(b.time) - new Date(a.time));
 
+              // Convert array back to object
+              const sortedData = dataArray.reduce((acc, curr) => {
+                const { key, ...rest } = curr;
+                acc[key] = rest;
+                return acc;
+              }, {});
 
-        if (data2 === null) {
-          console.log("null");
-          let supreme = '<div> <img class="w-full" src="src/oops2.gif" alt="oops"> <h4 class="w-full text-gray-800 -mt-8 text-center font-bold text-lg">Sorry No Task Found...!!!</h4> </div>';
+              //console.log(sortedData);
 
-          document.getElementById("showFix").innerHTML = supreme;
+              //sorting ends here
 
-        } else {
-        // code to sort data2... 
-        const dataArray = Object.entries(data2).map(([key, value]) => ({
-          key,
-          ...value,
-        }));
+              let putFix = "";
+              for (let x in sortedData) {
+                // Accessing data for a specific entry
+                const entryKey = x;
+                const entry = data2[entryKey];
 
-        // Sort array by time in descending order
-        dataArray.sort((a, b) => new Date(b.time) - new Date(a.time));
+                // Now you can access individual properties "+"
+                const mLink = entry.mLink;
+                const sLink = entry.sLink;
+                const time = entry.time;
+                const title = entry.title;
+                const type = entry.type;
+                const webService = entry.webService;
 
-        // Convert array back to object
-        const sortedData = dataArray.reduce((acc, curr) => {
-          const { key, ...rest } = curr;
-          acc[key] = rest;
-          return acc;
-        }, {});
+                putFix +=`<div class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700"><h5 class="mb-3 px-2 text-base font-semibold text-gray-900 md:text-xl dark:text-white break-words"> ${title} </h5><ul class="my-4 space-y-3"><li><div class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP" id="clickP"><span class="line-clamp-1 flex-1 text-xs cursor-pointer" id="clickC">${mLink}</span><span id="rep" class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Copy</span></div></li><li><div class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP" id="clickP"><span class="line-clamp-1 flex-1 text-xs cursor-pointer" id="clickC">${sLink}</span><span id="rep" class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Copy</span></div></li></ul><p class="text-sm px-4 font-normal text-right text-gray-500 dark:text-gray-400">${time}</p></div>`;
+                
+              }
+              document.getElementById("showFix").innerHTML = putFix;
 
-        //console.log(sortedData);
+              // Get all elements with class "cop"
+              var divs = document.getElementsByClassName("clickP");
 
-        //sorting ends here
-
-        let putFix = "";
-        for (let x in sortedData) {
-          // Accessing data for a specific entry
-          const entryKey = x;
-          const entry = data2[entryKey];
-
-          // Now you can access individual properties "+"
-          const mLink = entry.mLink;
-          const sLink = entry.sLink;
-          const time = entry.time;
-          const title = entry.title;
-          const type = entry.type;
-          const webService = entry.webService;
-
-          putFix += '<div class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700"><h5 class="mb-3 px-2 text-base font-semibold text-gray-900 md:text-xl dark:text-white break-words">'+title+'</h5><ul class="my-4 space-y-3"><li><div class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP" id="clickP"><span class="line-clamp-1 flex-1 text-xs cursor-pointer" id="clickC">'+mLink+'</span><span id="rep" class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Copy</span></div></li><li><div class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white clickP" id="clickP"><span class="line-clamp-1 flex-1 text-xs cursor-pointer" id="clickC">'+sLink+'</span><span id="rep" class="inline-flex items-center justify-center px-1.5 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Copy</span></div></li></ul><p class="text-sm px-4 font-normal text-right text-gray-500 dark:text-gray-400">'+time+'</p></div>';
-        }
-        document.getElementById("showFix").innerHTML = putFix;
-
-        // Get all elements with class "cop"
-        var divs = document.getElementsByClassName("clickP");
-
-        // Add click event listener to each div
-        for (var i = 0; i < divs.length; i++) {
-          divs[i].addEventListener("click", function () {
-            // Find the child div with id "nos" and copy its text
-            var clickC = this.querySelector("#clickC");
-            if (clickC) {
-              copyText(clickC.innerText);
-              var rep = this.querySelector("#rep");
-              rep.innerText = "copied";
+              // Add click event listener to each div
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].addEventListener("click", function () {
+                  // Find the child div with id "nos" and copy its text
+                  var clickC = this.querySelector("#clickC");
+                  if (clickC) {
+                    copyText(clickC.innerText);
+                    var rep = this.querySelector("#rep");
+                    rep.innerText = "copied";
+                  }
+                });
+              }
             }
           });
+
+          // Function to copy text to the clipboard
+          function copyText(text) {
+            // Create a textarea element and set its value to the text
+            var textarea = document.createElement("textarea");
+            textarea.value = text;
+
+            // Append the textarea to the document
+            document.body.appendChild(textarea);
+
+            // Select the text in the textarea
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); /* For mobile devices */
+
+            // Copy the selected text to the clipboard
+            document.execCommand("copy");
+
+            // Remove the textarea from the document
+            document.body.removeChild(textarea);
+
+            // Optionally, you can provide visual feedback to the user
+            //alert("Text copied: " + text);
+          }
+        } else {
+          // User is signed out
+
+          window.location.href = "../signin/";
         }
-      }
       });
-
-      // Function to copy text to the clipboard
-      function copyText(text) {
-        // Create a textarea element and set its value to the text
-        var textarea = document.createElement("textarea");
-        textarea.value = text;
-
-        // Append the textarea to the document
-        document.body.appendChild(textarea);
-
-        // Select the text in the textarea
-        textarea.select();
-        textarea.setSelectionRange(0, 99999); /* For mobile devices */
-
-        // Copy the selected text to the clipboard
-        document.execCommand("copy");
-
-        // Remove the textarea from the document
-        document.body.removeChild(textarea);
-
-        // Optionally, you can provide visual feedback to the user
-        //alert("Text copied: " + text);
-      }
     </script>
   </body>
 </html>
