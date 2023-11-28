@@ -173,7 +173,7 @@
           
           // User is signed in
           
-          const uid = user.uid;
+          const uidn = user.uid;
 
           document.getElementById("userName").innerHTML = user.displayName ;
           //photoURL
@@ -190,6 +190,8 @@
 
         }
       });
+
+      console.log("uidn");
 
       const pullRef = ref(db, "webNetlify3");
 
