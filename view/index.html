@@ -180,10 +180,12 @@
 
           onValue(pullRef, (snapshot) => {
             const data2 = snapshot.val();
-            //console.log(data2);
+            
 
             if (data2 === null) {
-              console.log("null");
+              
+              // null object 
+
               let supreme = '<div> <h4 class="w-full text-gray-800 mt-8 text-center font-bold text-lg">Sorry No link Found...!!!</h4> </div>';
 
               document.getElementById("showFix").innerHTML = supreme;
@@ -204,7 +206,7 @@
                 return acc;
               }, {});
 
-              //console.log(sortedData);
+              
 
               //sorting ends here
 
