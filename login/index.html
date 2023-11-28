@@ -134,6 +134,13 @@
           phoneNumber: phoneNumber,
           pool: pool,
         });
+        
+        setTimeout(
+            function() {
+                window.location.href = "../rover/";
+            }, 5000
+        );
+        
       }
 
       function signInInitiator() {
@@ -176,7 +183,7 @@
             const credential = GoogleAuthProvider.credentialFromError(error);
             // ...
           });
-          window.location.href = "../rover/";
+          
       }
 
       var signInBtn = document.getElementById("signInBtn");
