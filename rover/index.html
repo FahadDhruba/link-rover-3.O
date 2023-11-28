@@ -64,8 +64,8 @@
           <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 
             <button type="button" class="px-1 md:px-3 flex text-sm rounded-full md:me-0">
-              <span class="py-1 font-semibold px-1 hidden md:block">Open user menu</span>
-              <img class="w-8 h-8 rounded-full" src="images/logo.png" alt="user photo">
+              <span id="userName" class="py-1 font-semibold px-1 hidden md:block"></span>
+              <img id="userImg" class="w-8 h-8 rounded-full" src="../images/white.png" alt="user photo">
             </button>
 
 
@@ -211,7 +211,10 @@
           // User is signed in
           
           const uid = user.uid;
-          // ...
+
+          document.getElementById("userName").innerHTML = user.displayName ;
+          //photoURL
+          document.getElementById("userImg").src = user.photoURL;
 
           console.log("signed");
 
