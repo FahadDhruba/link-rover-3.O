@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- set charset -->
+    <meta charset="UTF-8" />
+
+    <!-- Viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Description meta tag -->
+    <meta
+      name="description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba."
+    />
+
+    <!-- Keywords meta tag -->
+    <meta
+      name="keywords"
+      content="Google Drive, link, viewable, downloadable, Fahad Alamgir Dhruba, Link Rover"
+    />
+
+    <!-- Author meta tag -->
+    <meta name="author" content="Fahad Alamgir Dhruba" />
+
+    <!-- Canonical link tag -->
+    <link rel="canonical" href="https://linkrover.netlify.app/" />
+
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Link Rover V3" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://linkrover.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://linkrover.netlify.app/images/logo.png"
+    />
+    <meta
+      property="og:description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba."
+    />
+
+    <!-- Twitter card tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Link Rover V3" />
+    <meta
+      name="twitter:description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba."
+    />
+    <meta
+      name="twitter:image"
+      content="https://linkrover.netlify.app/images/logo.png"
+    />
+    <meta name="twitter:url" content="https://linkrover.netlify.app/" />
+
+    <!-- WhatsApp meta tags -->
+    <meta
+      name="whatsapp:description"
+      content="Link Rover is a tool created by Fahad Alamgir Dhruba."
+    />
+    <meta name="whatsapp:title" content="Link Rover V3" />
+    <meta
+      name="whatsapp:image"
+      content="https://linkrover.netlify.app/images/logo.png"
+    />
+    <meta name="whatsapp:url" content="https://linkrover.netlify.app/" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
+
+    <!-- tailwind cdn script -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- title -->
+    <title>Sign Out</title>
+  </head>
+  <body>
+    
+    
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+      import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0z9y5NuCs2OTHo5akeIV5-hQYRvpOXmE",
+        authDomain: "link-rover-3.firebaseapp.com",
+        databaseURL: "https://link-rover-3-default-rtdb.firebaseio.com",
+        projectId: "link-rover-3",
+        storageBucket: "link-rover-3.appspot.com",
+        messagingSenderId: "715683693672",
+        appId: "1:715683693672:web:0d86f9370a7949095727dd",
+        measurementId: "G-CPTVR03Q63",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      
+
+      const auth = getAuth();
+      
+      signOut(auth).then(()=>{
+
+        // signed out
+
+        window.location.href = "../signin/";
+
+      }).catch((error)=>{
+
+        // error Occurd
+
+      });
+    </script>
+  </body>
+</html>
