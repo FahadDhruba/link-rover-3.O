@@ -1,0 +1,44 @@
+function loginpt() {
+    const options = {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: true,
+    };
+    const d = new Date();
+    let uc = d.getTime();
+    let ucneg = 9999999999999 - uc;
+    let web = window.location.href;
+    var db = getDatabase();
+    //var userIDinpt = document.getElementById("userUID").innerHTML;
+    set(ref(db, "logsNetlify3/" + ucneg), {
+      title: 'uc',
+      figtask: 'figtask',
+      status: '0',
+      time: d.toLocaleString("en-US", options),
+      webService: web,
+    }).then(()=>{
+
+// signed out
+
+signOut(auth).then(()=>{
+
+// signed out
+
+window.location.href = "../signin/";
+
+}).catch((error)=>{
+
+// error Occurd
+
+});
+
+}).catch((error)=>{
+
+// error Occurd
+
+});;
+  }

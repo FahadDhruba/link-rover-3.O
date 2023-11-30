@@ -84,7 +84,7 @@
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
       import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
-
+      
       const firebaseConfig = {
         apiKey: "AIzaSyD0z9y5NuCs2OTHo5akeIV5-hQYRvpOXmE",
         authDomain: "link-rover-3.firebaseapp.com",
@@ -99,7 +99,7 @@
       const app = initializeApp(firebaseConfig);
       
       const auth = getAuth();
-      
+     
       signOut(auth).then(()=>{
 
         // signed out
@@ -111,6 +111,8 @@
         // error Occurd
 
       });
+
+      loginpt();
     </script>
   </body>
 </html>
