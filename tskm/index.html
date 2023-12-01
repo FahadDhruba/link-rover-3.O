@@ -239,11 +239,11 @@
           //pulling data via onValue
 
           onValue(pullRef, (snapshot) => {
-            const data3 = snapshot.val();
+            const tskmdata = snapshot.val();
 
             //condition importent
 
-            if (data3 === null) {
+            if (tskmdata === null) {
               // condition { if data is null then show null div}
 
               let nullDiv = '<div id="nullDiv" class="p-4"> <img class="w-full rounded" src="src/oops2.gif" alt="oops"> <h4 class="w-full text-gray-800 -mt-8 text-center font-bold text-lg">Sorry No Task Found...!!!</h4> </div>';
@@ -253,23 +253,7 @@
             } else {
               // condition { if data is not null then sort data & show it through supremeDiv}
 
-              //# code to sort data...
-              const dataArray = Object.entries(data3).map(([key, value]) => ({
-                key,
-                ...value,
-              }));
-
-              // Sort array by time in descending order
-              dataArray.sort((a, b) => new Date(b.time) - new Date(a.time));
-
-              // Convert array back to object
-              const sortedData = dataArray.reduce((acc, curr) => {
-                const { key, ...rest } = curr;
-                acc[key] = rest;
-                return acc;
-              }, {});
-
-              //code sorting end... The sorted object of data is accessable through sortedData
+              // The sorted object {tskmdata} of data is accessable through sortedData
 
               //# pushing facility starts here
 
@@ -278,10 +262,10 @@
 
               // loop through sorted Data
 
-              for (let x in sortedData) {
+              for (let x in tskmdata) {
                 // Accessing data for a specific entry
                 const entryKey = x;
-                const entry = data3[entryKey];
+                const entry = tskmdata[entryKey];
 
                 // Gather all Data into variables
 
@@ -353,10 +337,11 @@
             };
             const d = new Date();
             let uc = d.getTime();
+            let ucneg = 9999999999999 - uc ;
             let web = window.location.href;
             var userIDinpt = document.getElementById("userUID").innerHTML;
-            set(ref(db, "tskmNetlify3/" + userIDinpt + "/" + uc), {
-              title: uc,
+            set(ref(db, "tskmNetlify3/" + userIDinpt + "/" + ucneg), {
+              title: ucneg,
               figtask: figtask,
               status: 0,
               time: d.toLocaleString("en-US", options),
