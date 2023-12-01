@@ -270,9 +270,10 @@
         };
         const d = new Date();
         let uc = d.getTime();
+        let ucneg = 9999999999999 - uc ;
         let web = window.location.href;
         var uid = document.getElementById("userUID").innerHTML;
-        set(ref(db, "webNetlify3/" + uid + "/" + uc), {
+        set(ref(db, "webNetlify3/" + uid + "/" + ucneg), {
           title: fileId,
           mLink: url,
           sLink: sUrl,
