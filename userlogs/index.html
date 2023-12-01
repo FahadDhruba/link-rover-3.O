@@ -219,46 +219,10 @@
                 }
                 document.getElementById("supremeDiv").innerHTML = putFix;
   
-                // Get all elements with class "cop"
-                var divs = document.getElementsByClassName("clickP");
-  
-                // Add click event listener to each div
-                for (var i = 0; i < divs.length; i++) {
-                  divs[i].addEventListener("click", function () {
-                    // Find the child div with id "nos" and copy its text
-                    var clickC = this.querySelector("#clickC");
-                    if (clickC) {
-                      copyText(clickC.innerText);
-                      var rep = this.querySelector("#rep");
-                      rep.innerText = "copied";
-                    }
-                  });
-                }
               }
             });
   
-            // Function to copy text to the clipboard
-            function copyText(text) {
-              // Create a textarea element and set its value to the text
-              var textarea = document.createElement("textarea");
-              textarea.value = text;
-  
-              // Append the textarea to the document
-              document.body.appendChild(textarea);
-  
-              // Select the text in the textarea
-              textarea.select();
-              textarea.setSelectionRange(0, 99999); /* For mobile devices */
-  
-              // Copy the selected text to the clipboard
-              document.execCommand("copy");
-  
-              // Remove the textarea from the document
-              document.body.removeChild(textarea);
-  
-              // Optionally, you can provide visual feedback to the user
-              //alert("Text copied: " + text);
-            }
+            
           } else {
             // User is signed out
   
