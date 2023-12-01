@@ -203,10 +203,10 @@
           const pullRef = ref(db, "webNetlify3/" + user.uid);
 
           onValue(pullRef, (snapshot) => {
-            const data2 = snapshot.val();
+            const viewData = snapshot.val();
             
 
-            if (data2 === null) {
+            if (viewData === null) {
               
               // null object 
 
@@ -214,31 +214,13 @@
 
               document.getElementById("showFix").innerHTML = supreme;
             } else {
-              // code to sort data2...
-              const dataArray = Object.entries(data2).map(([key, value]) => ({
-                key,
-                ...value,
-              }));
-
-              // Sort array by time in descending order
-              dataArray.sort((a, b) => new Date(b.time) - new Date(a.time));
-
-              // Convert array back to object
-              const sortedData = dataArray.reduce((acc, curr) => {
-                const { key, ...rest } = curr;
-                acc[key] = rest;
-                return acc;
-              }, {});
-
               
-
-              //sorting ends here
-
+              
               let putFix = "";
-              for (let x in sortedData) {
+              for (let x in viewData) {
                 // Accessing data for a specific entry
                 const entryKey = x;
-                const entry = data2[entryKey];
+                const entry = viewData[entryKey];
 
                 // Now you can access individual properties "+"
                 const mLink = entry.mLink;
