@@ -383,7 +383,7 @@
             } else {
               var figtaskSub = taskVal.replace(/\n/g, "<br>");
 
-              var figtask = figtaskSub.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
+              var figtask = figtaskSub.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">$1</a>');
               
               tskminpt(figtask);
 
