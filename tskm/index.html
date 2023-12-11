@@ -381,8 +381,10 @@
 
             if (taskVal == "") {
             } else {
-              var figtask = taskVal.replace(/\n/g, "<br>");
+              var figtaskSub = taskVal.replace(/\n/g, "<br>");
 
+              var figtask = figtaskSub.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
+              
               tskminpt(figtask);
 
               document.getElementById("taskinp").value = "";
